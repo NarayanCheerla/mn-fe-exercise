@@ -4,6 +4,15 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "build:components": "npx lerna run build --scope=components",
+    "build:utils": "npx lerna run build --scope=utils",
+    "prebuild": "concurrently \"npm run build:components \" \"npm run build:utils\"",
+    "predev": "concurrently \"npm run build:components \" \"npm run build:utils\"",
+    "build": "npx lerna run build --scope=pokedex",
+    "start": "npx lerna run start --scope=pokedex",
+    "dev": "npx lerna run dev --scope=pokedex"
+  },
   "dependencies": {},
   "devDependencies": {
     "lerna": "^8.1.7"
