@@ -11,7 +11,7 @@
     "predev": "concurrently \"npm run build:components \" \"npm run build:utils\"",
     "build": "npx lerna run build --scope=pokedex",
     "start": "npx lerna run start --scope=pokedex",
-    "dev": "npx lerna run dev --scope=pokexex"
+    "dev": "npx lerna run dev --scope=pokedex"
   },
   "dependencies": {},
   "devDependencies": {

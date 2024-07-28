@@ -10,4 +10,5 @@ Open http://localhost:3000
 
 Run below command in root folder to run the application in local
 
+npm i
 npm run dev
