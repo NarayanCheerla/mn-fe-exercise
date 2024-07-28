@@ -29,12 +29,15 @@
     "build": "tsup src/index.ts --dts --format=esm,cjs --clean --dts && npm run build.style",
     "build-fast": "tsup src/index.ts --format=esm,cjs --clean --no-dts --watch",
     "dev:styles": "tailwindcss -i ./src/styles/input.css -o ./dist/output.css --watch",
-    "dev": "concurrently \"npm run build-fast \" \"npm run dev:styles\""
+    "dev": "concurrently \"npm run build-fast \" \"npm run dev:styles\"",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -50,10 +53,24 @@
     ]
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.2.6",
+    "@storybook/addon-interactions": "^8.2.6",
+    "@storybook/addon-links": "^8.2.6",
+    "@storybook/addon-onboarding": "^8.2.6",
+    "@storybook/blocks": "^8.2.6",
+    "@storybook/preset-create-react-app": "^8.2.6",
+    "@storybook/react": "^8.2.6",
+    "@storybook/react-webpack5": "^8.2.6",
+    "@storybook/test": "^8.2.6",
     "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
+    "eslint-plugin-storybook": "^0.8.0",
     "postcss": "^8.4.40",
+    "prop-types": "^15.8.1",
+    "storybook": "^8.2.6",
     "tailwindcss": "^3.4.7",
-    "tsup": "^8.2.3"
+    "tsup": "^8.2.3",
+    "webpack": "^5.93.0"
   }
 }
