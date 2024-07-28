@@ -1,12 +1,13 @@
-# mn-fe-exercise
-assessment implementation for marlow navigation
+Run below docker commands in the project root directly.
+
+#1 docker build -t mn-fe-exercise-docker .
+
+#2 docker run -p 3000:3000 mn-fe-exercise-docker
+
+Open http://localhost:3000
 
 
-#step1 : npx lerna init
 
-#step2: careate folder with name packages
+Run below command in root folder to run the application in local
 
-#setp3: create react js project with components in it.
-    npx create-react-app components --template typescript
-    
-#step4: Install tailwind setup
+npm run dev
