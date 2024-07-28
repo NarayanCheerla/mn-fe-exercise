@@ -1,33 +1,30 @@
-import React from "react";
+import {type ReactNode } from "react";
 import "../styles/input.css";
 
 type ButtonProps = {
-  textColor?: string;
-  title: string;
+  color?: string;
+  children: ReactNode;
   disable?: boolean;
   backgroundColor?: string;
-  padding?: string;
-  fontSize?: string;
-  margin?: string;
   borderColor?:string;
+  onClick?: () => void;
 };
 
 const Button = ({
-  textColor = "white",
-  title = "Default",
+  color = "white",
+  children,
   disable = false,
   backgroundColor = "bg-blue-400",
-  padding = "p-2",
-  fontSize = "text-md",
-  margin = "m-1",
   borderColor = "border-blue-700",
+  onClick
 }: ButtonProps) => {
   return (
     <button
-      className={`${backgroundColor} ${padding} rounded-lg ${padding} ${fontSize} border border-solid ${borderColor} ${margin} ${disable ? "bg-gray-400 border-gray-500 pointer-events-none" : "bg-blue-500 border-blue-500"}`}
-      style={{ color: textColor }}
+      className={`rounded-lg p-2 tex-md border border-solid m-1 ${disable ? "!bg-gray-400 !border-gray-500 pointer-events-none !text-gray-950" : "bg-blue-500 border-blue-500"}`}
+      style={{ color, backgroundColor, borderColor }}
+      onClick={onClick}
     >
-      {title}
+      {children}
     </button>
   );
 };
