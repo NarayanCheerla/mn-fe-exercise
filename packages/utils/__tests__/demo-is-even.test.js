@@ -1,8 +1,5 @@
-const {isEven} = require("../dist/demo-is-even");
+const {ConvertAsHeading} = require("../dist/utils");
 
 test("isEven", () => {
-    expect(isEven(1)).toBe(false);
-    expect(isEven(2)).toBe(true);
-    expect(isEven(3)).toBe(false);
-    expect(isEven(4)).toBe(true);
+    expect(ConvertAsHeading("hi-welcome")).toEqual("Hi Welcome");
 })
