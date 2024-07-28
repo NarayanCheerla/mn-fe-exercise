@@ -14,19 +14,21 @@ export interface PokemonResponse  {
     urls: string[];
   };
   
-  export interface PokemonDetailsResponse  {
-    id: number;
-    name: string;
-    width:number;
-    height:number;
-    sprites: {
+  export interface SpritesType {
       front_default: string;
       other: {
         dream_world: {
           front_default: string;
         }
       }
-    };
+  }
+
+  export interface PokemonDetailsResponse  {
+    id: number;
+    name: string;
+    width:number;
+    height:number;
+    sprites: SpritesType;
     stats: {
       base_stat: number;
       stat: {
@@ -34,3 +36,8 @@ export interface PokemonResponse  {
       }
     }[]
   };
+
+  export interface PokemonFilters {
+    limit: number;
+    offset: number;
+  }
