@@ -19,6 +19,14 @@ var Button = ({
   );
 };
 var Button_default = Button;
+
+// src/components/Card.tsx
+import { jsx as jsx2 } from "react/jsx-runtime";
+var Card = ({ children }) => {
+  return /* @__PURE__ */ jsx2("div", { className: "flex justify-center cursor-pointer bg-slate-200 border rounded-md p-1 w-full my-1 hover:border-neutral-700 hover:bg-neutral-800/30", children });
+};
+var Card_default = Card;
 export {
-  Button_default as Button
+  Button_default as Button,
+  Card_default as Card
 };
