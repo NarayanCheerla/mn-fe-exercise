@@ -27,7 +27,7 @@
   "scripts": {
     "build.style": "tailwindcss -i ./src/styles/input.css -o ./dist/output.css",
     "build": "tsup src/index.ts --dts --format=esm,cjs --clean --dts && npm run build.style",
-    "build-fast": "tsup src/index.ts --format=esm,cjs --no-dts --watch",
+    "build-fast": "tsup src/index.ts --format=esm,cjs --clean --no-dts --watch",
     "dev:styles": "tailwindcss -i ./src/styles/input.css -o ./dist/output.css --watch",
     "dev": "concurrently \"npm run build-fast \" \"npm run dev:styles\""
   },
