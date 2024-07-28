@@ -20,7 +20,8 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  Button: () => Button_default
+  Button: () => Button_default,
+  Card: () => Card_default
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -45,7 +46,15 @@ var Button = ({
   );
 };
 var Button_default = Button;
+
+// src/components/Card.tsx
+var import_jsx_runtime2 = require("react/jsx-runtime");
+var Card = ({ children }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "flex justify-center cursor-pointer bg-slate-200 border rounded-md p-1 w-full my-1 hover:border-neutral-700 hover:bg-neutral-800/30", children });
+};
+var Card_default = Card;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  Button
+  Button,
+  Card
 });
