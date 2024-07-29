@@ -18,7 +18,7 @@ const useGetPokemons = ({ offset, limit }: PokemonFilters) => {
   return useQuery({
     queryKey: [QUERY_KEY_POKEMONS_LIST, offset, limit],
     queryFn: () => getPokomons({ offset, limit }),
-    staleTime: Infinity,
+    // staleTime: Infinity,
   });
 };
 

@@ -1,8 +1,8 @@
 "use client";
 import { Header } from "components";
 import { useRouter } from "next/navigation";
+import { Avatar, Box } from "@mui/material";
 import { useEffect, useMemo, useState } from "react";
-import { Avatar, Box, Typography } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 
 import useGetPokemons from "./hooks/useGetPokemons";
