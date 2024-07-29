@@ -10,11 +10,13 @@
     "build": "npx lerna run build",
     "start": "npx lerna run start",
     "dev": "npx lerna run dev --scope=pokedex",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint": "eslint --ignore-path .gitignore .",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "husky": "^9.1.3",
+    "husky": "^8.0.0",
     "lerna": "^8.1.7",
     "lint-staged": "^15.2.7",
     "nx": "19.5.3",

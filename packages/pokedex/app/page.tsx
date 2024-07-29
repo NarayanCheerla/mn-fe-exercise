@@ -83,14 +83,14 @@ const PokedexList = () => {
     if (!detailsFetching) {
       setDataGridData(pokemonDetails ?? []);
     }
-  }, [detailsFetching, paginationModel]);
+  }, [detailsFetching, pokemonDetails]);
 
   useEffect(() => {
     if (isSuccess) {
       setRowCount(data.count ?? 0);
       setUrls(data.results.map((pokemon) => pokemon.url));
     }
-  }, [isLoading, isFetching, isSuccess]);
+  }, [isSuccess, data?.count, data?.results]);
 
   const handleRowClick = (data: { row: PokemonDetailsResponse }) => {
     dispatch(setPokemon(data?.row));
