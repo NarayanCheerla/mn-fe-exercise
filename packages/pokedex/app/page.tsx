@@ -101,7 +101,7 @@ const PokedexList = () => {
     <div className="w-3/4 m-auto mt-2">
       {(isError || detailsError) && (
         <h1 className="text-red-500 p-2 bg-red-50 m-1 rounded text-center">
-          Error while fetching data..
+          Error while fetching data.
         </h1>
       )}
       <Box sx={{ height: 400, width: "100%" }}>
