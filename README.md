@@ -1,10 +1,12 @@
 # To run in local
+
 ```sh
 npm i
 npm run dev
 ```
 
 # To build and run in local
+
 ```sh
 npm i
 npm run build
@@ -12,14 +14,16 @@ npm run start
 ```
 
 # To run components storybook
+
 ```sh
 npm i
 npm run storybook
 ```
+
 Open [http://localhost:6006](http://localhost:6006/)
 
-
 # To run Utils tests
+
 ```sh
 npm i
 npm run test
@@ -31,5 +35,5 @@ npm run test
 docker build -t mn-fe-exercise-docker .
 docker run -p 3000:3000 mn-fe-exercise-docker
 ```
-Open [http://localhost:3000](http://localhost:3000/)
 
+Open [http://localhost:3000](http://localhost:3000/)

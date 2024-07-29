@@ -1,4 +1,4 @@
-import {type ReactNode } from "react";
+import { type ReactNode } from "react";
 import "../styles/input.css";
 
 type ButtonProps = {
@@ -6,7 +6,7 @@ type ButtonProps = {
   children: ReactNode;
   disable?: boolean;
   backgroundColor?: string;
-  borderColor?:string;
+  borderColor?: string;
   onClick?: () => void;
 };
 
@@ -16,7 +16,7 @@ const Button = ({
   disable = false,
   backgroundColor = "bg-blue-400",
   borderColor = "border-blue-700",
-  onClick
+  onClick,
 }: ButtonProps) => {
   return (
     <button

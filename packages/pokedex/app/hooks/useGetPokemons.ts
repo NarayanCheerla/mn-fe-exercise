@@ -10,7 +10,7 @@ const getPokomons = async ({
   limit,
 }: PokemonFilters): Promise<PokemonResponse> => {
   const response = await axios.get(
-    `${API_URL}?offset=${offset}&limit=${limit}`
+    `${API_URL}?offset=${offset}&limit=${limit}`,
   );
   return response.data;
 };

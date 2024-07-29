@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={`${inter.className}`}>
         <ReactQueryProvider>
           <main>{children}</main>
-        <ReactQueryDevtools/>
+          <ReactQueryDevtools />
         </ReactQueryProvider>
       </body>
     </html>

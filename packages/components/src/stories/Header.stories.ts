@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: "Default Header",
-    size: "md"
+    size: "md",
   },
 };
 
@@ -26,6 +26,6 @@ export const Small: Story = {
 export const Large: Story = {
   args: {
     title: "Default Header",
-    size: "lg"
+    size: "lg",
   },
 };

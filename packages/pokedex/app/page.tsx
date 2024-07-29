@@ -46,7 +46,7 @@ const PokedexList = () => {
         headerName: "Image",
         width: 90,
         renderCell: (
-          params: GridCellParams<PokemonDetailsResponse, SpritesType>
+          params: GridCellParams<PokemonDetailsResponse, SpritesType>,
         ) => <Avatar src={params.value?.front_default} />,
       },
       { field: "name", headerName: "Name", width: 200 },
@@ -63,7 +63,7 @@ const PokedexList = () => {
         headerName: "Types",
         width: 150,
         renderCell: (
-          params: GridCellParams<PokemonDetailsResponse, PokemonTypes[]>
+          params: GridCellParams<PokemonDetailsResponse, PokemonTypes[]>,
         ) =>
           params.value
             ?.map((t) => t.type)
@@ -71,7 +71,7 @@ const PokedexList = () => {
             .join(", "),
       },
     ],
-    []
+    [],
   );
 
   useEffect(() => {
