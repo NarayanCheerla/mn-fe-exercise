@@ -1,7 +1,7 @@
 # To run in local
 ```sh
 npm i
-np run dev
+npm run dev
 ```
 
 # To build and run in local
@@ -13,18 +13,16 @@ npm run start
 
 # To run components storybook
 ```sh
-cd packages\components
 npm i
-npx lerna run storybook --scope=components
+npm run storybook
 ```
 Open [http://localhost:6006](http://localhost:6006/)
 
 
 # To run Utils tests
 ```sh
-cd packages\utils
 npm i
-npx lerna run test --scope=utils
+npm run test
 ```
 
 # To run in docker
