@@ -8,31 +8,33 @@ import useGetPokemons from "./hooks/useGetPokemons";
 import { useAppDispatch } from "./features/pokemon/hooks";
 import { setPokemon } from "./features/pokemon/pokemon-slice";
 import useGetPokemonDetails from "./hooks/useGetPokemonDetails";
-import type { PokemonDetailsResponse, SpritesType } from "../types";
+import type {
+  PokemonDetailsResponse,
+  PokemonTypes,
+  SpritesType,
+} from "../types";
 
 const PokedexList = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const rowsPerPageOptions = [5, 10, 20];
-  const [nextUrl, setNextUrl] = useState("");
-  const [urls, setUrls] = useState<string[]>([]);
-  const [previousUrl, setPreviousUrl] = useState("");
-  const [dataGridData, setDataGridData] = useState<any>([]);
   const [page, setPage] = useState(0);
+  const rowsPerPageOptions = [5, 10, 20];
+  const [rowCount, setRowCount] = useState(0);
   const [pageSize, setPageSize] = useState(20);
+  const [urls, setUrls] = useState<string[]>([]);
+  const [dataGridData, setDataGridData] = useState<any>([]);
   const [paginationModel, setPaginationModel] = useState({
     page,
     pageSize,
   });
-  const { data, error, isError, isLoading, isFetching, isSuccess } =
-    useGetPokemons({
-      offset: page,
-      limit: pageSize
-    });
+  const { data, isError, isLoading, isFetching, isSuccess } = useGetPokemons({
+    offset: page * pageSize,
+    limit: pageSize,
+  });
   const {
     data: pokemonDetails,
     isLoading: detailsLoading,
-    isError: detailsErro,
+    isError: detailsError,
   } = useGetPokemonDetails({ urls });
 
   const columns = useMemo(
@@ -41,14 +43,32 @@ const PokedexList = () => {
       {
         field: "sprites",
         headerName: "Image",
-        width: 60,
+        width: 90,
         renderCell: (
           params: GridCellParams<PokemonDetailsResponse, SpritesType>
-        ) => {
-          return <Avatar src={params.value?.front_default} />;
-        },
+        ) => <Avatar src={params.value?.front_default} />,
       },
-      { field: "name", headerName: "Name", width: 150 },
+      { field: "name", headerName: "Name", width: 200 },
+      { field: "weight", headerName: "Weight", width: 100 },
+      { field: "order", headerName: "Order", width: 100 },
+      { field: "base_experience", headerName: "Base Exp", width: 100 },
+      {
+        field: "is_default",
+        headerName: "Default",
+        width: 100,
+      },
+      {
+        field: "types",
+        headerName: "Types",
+        width: 150,
+        renderCell: (
+          params: GridCellParams<PokemonDetailsResponse, PokemonTypes[]>
+        ) =>
+          params.value
+            ?.map((t) => t.type)
+            .map((n) => n.name)
+            .join(", "),
+      },
     ],
     []
   );
@@ -56,52 +76,55 @@ const PokedexList = () => {
   useEffect(() => {
     setPage(paginationModel.page);
     setPageSize(paginationModel.pageSize);
-  },[paginationModel]);
+  }, [paginationModel]);
 
   useEffect(() => {
     if (!detailsLoading) {
       setDataGridData(pokemonDetails ?? []);
     }
-  }, [detailsLoading]);
+  }, [detailsLoading, paginationModel]);
 
   useEffect(() => {
     if (isSuccess) {
-      setNextUrl(data.next ?? "");
-      setPreviousUrl(data.previous ?? "");
+      setRowCount(data.count ?? 0);
       setUrls(data.results.map((pokemon) => pokemon.url));
     }
-  }, [data, isSuccess]);
+  }, [isLoading, isFetching, isSuccess]);
 
   const handleRowClick = (data: { row: PokemonDetailsResponse }) => {
     dispatch(setPokemon(data?.row));
     router.push("/pokemon-details");
   };
 
-
-
   return (
     <div className="w-3/4 m-auto mt-2">
+      {JSON.stringify(paginationModel)}
+      {(isError || detailsError) && (
+        <h1 className="text-red-500 p-2 bg-red-50 m-1 rounded text-center">
+          Error while fetching data..
+        </h1>
+      )}
       <div className="flex items-start justify-center">
-        {detailsLoading && <h1>Loading..</h1>}
-        {!detailsLoading && (
-          <Box sx={{ height: 400, width: "100%" }}>
-            <Typography
-              variant="h3"
-              component="h3"
-              sx={{ textAlign: "center", mt: 3, mb: 3 }}
-            >
-              Pokemon List
-            </Typography>
-            <DataGrid
-              rows={dataGridData}
-              columns={columns}
-              pageSizeOptions={rowsPerPageOptions}
-              paginationModel={paginationModel}
-              onPaginationModelChange={setPaginationModel}
-              onRowClick={handleRowClick}
-            />
-          </Box>
-        )}
+        <Box sx={{ height: 400, width: "100%" }}>
+          <Typography
+            variant="h3"
+            component="h3"
+            sx={{ textAlign: "center", mt: 3, mb: 3 }}
+          >
+            Pokemon List
+          </Typography>
+          <DataGrid
+            loading={detailsLoading}
+            paginationMode="server"
+            columns={columns}
+            rowCount={rowCount}
+            rows={dataGridData}
+            onRowClick={handleRowClick}
+            paginationModel={paginationModel}
+            pageSizeOptions={rowsPerPageOptions}
+            onPaginationModelChange={setPaginationModel}
+          />
+        </Box>
       </div>
     </div>
   );

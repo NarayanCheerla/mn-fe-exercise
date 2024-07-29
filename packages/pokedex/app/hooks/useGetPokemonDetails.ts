@@ -17,13 +17,14 @@ const useGetPokemonDetails = ({ urls }: PokemonDetailsInputType) => {
       queryKey: [QUERY_KEY_POKEMON_DETAILS, url],
       queryFn: () => getPokomonDetails(url),
       enabled: !!url,
-      staleTime: Infinity,
+      // staleTime: Infinity,
     })) ?? [],
     combine: (results) => {
       return {
         data: results.map((result) => result.data),
         isLoading: results.some(result => result.isLoading),
-        isError: results.some(result => result.isError)
+        isError: results.some(result => result.isError),
+        isFetching: results.some(result => result.isFetching)
       }
     },
   });

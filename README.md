@@ -7,7 +7,7 @@ Run below docker commands in the project root directly.
 Open http://localhost:3000
 
 
-
+-------------------------------
 Run below command in root folder to run the application in local
 
 npm i
