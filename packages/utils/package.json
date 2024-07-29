@@ -15,6 +15,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "tsc --watch",
     "build": "tsc",
     "test": "jest"
   },
