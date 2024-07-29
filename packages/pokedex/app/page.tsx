@@ -1,4 +1,5 @@
 "use client";
+import { Header } from "components";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Avatar, Box, Typography } from "@mui/material";
@@ -33,7 +34,7 @@ const PokedexList = () => {
   });
   const {
     data: pokemonDetails,
-    isLoading: detailsLoading,
+    isFetching: detailsFetching,
     isError: detailsError,
   } = useGetPokemonDetails({ urls });
 
@@ -79,10 +80,10 @@ const PokedexList = () => {
   }, [paginationModel]);
 
   useEffect(() => {
-    if (!detailsLoading) {
+    if (!detailsFetching) {
       setDataGridData(pokemonDetails ?? []);
     }
-  }, [detailsLoading, paginationModel]);
+  }, [detailsFetching, paginationModel]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -98,34 +99,29 @@ const PokedexList = () => {
 
   return (
     <div className="w-3/4 m-auto mt-2">
-      {JSON.stringify(paginationModel)}
       {(isError || detailsError) && (
         <h1 className="text-red-500 p-2 bg-red-50 m-1 rounded text-center">
           Error while fetching data..
         </h1>
       )}
-      <div className="flex items-start justify-center">
-        <Box sx={{ height: 400, width: "100%" }}>
-          <Typography
-            variant="h3"
-            component="h3"
-            sx={{ textAlign: "center", mt: 3, mb: 3 }}
-          >
-            Pokemon List
-          </Typography>
-          <DataGrid
-            loading={detailsLoading}
-            paginationMode="server"
-            columns={columns}
-            rowCount={rowCount}
-            rows={dataGridData}
-            onRowClick={handleRowClick}
-            paginationModel={paginationModel}
-            pageSizeOptions={rowsPerPageOptions}
-            onPaginationModelChange={setPaginationModel}
-          />
-        </Box>
-      </div>
+      <Box sx={{ height: 400, width: "100%" }}>
+        <Header
+          size="lg"
+          title="Pokemon List"
+          extraClassNames="flex justify-center"
+        />
+        <DataGrid
+          loading={detailsFetching}
+          paginationMode="server"
+          columns={columns}
+          rowCount={rowCount}
+          rows={dataGridData}
+          onRowClick={handleRowClick}
+          paginationModel={paginationModel}
+          pageSizeOptions={rowsPerPageOptions}
+          onPaginationModelChange={setPaginationModel}
+        />
+      </Box>
     </div>
   );
 };

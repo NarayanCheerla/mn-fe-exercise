@@ -21,7 +21,8 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   Button: () => Button_default,
-  Card: () => Card_default
+  Card: () => Card_default,
+  Header: () => Header_default
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -53,8 +54,43 @@ var Card = ({ children }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "flex justify-center cursor-pointer bg-slate-200 border rounded-md p-1 w-full my-1 hover:border-neutral-700 hover:bg-neutral-800/30", children });
 };
 var Card_default = Card;
+
+// ../../node_modules/clsx/dist/clsx.mjs
+function r(e) {
+  var t, f, n = "";
+  if ("string" == typeof e || "number" == typeof e) n += e;
+  else if ("object" == typeof e) if (Array.isArray(e)) {
+    var o = e.length;
+    for (t = 0; t < o; t++) e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+  } else for (f in e) e[f] && (n && (n += " "), n += f);
+  return n;
+}
+function clsx() {
+  for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
+  return n;
+}
+var clsx_default = clsx;
+
+// src/components/Header.tsx
+var import_jsx_runtime3 = require("react/jsx-runtime");
+var Header = ({ title, size = "md", extraClassNames }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+    "div",
+    {
+      className: clsx_default(
+        { "text-1xl my-1 font-medium": size === "sm" },
+        { "text-2xl my-2 font-semibold": size === "md" },
+        { "text-3xl my-2 font-bold": size === "lg" },
+        `${extraClassNames}`
+      ),
+      children: title
+    }
+  );
+};
+var Header_default = Header;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Button,
-  Card
+  Card,
+  Header
 });
