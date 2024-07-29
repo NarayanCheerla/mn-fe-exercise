@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": ["^dev"],
+      "cache": true
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "cache": true
+    },
+    "storybook": {
+      "dependsOn": ["build"],
+      "cache": true
+    }
+  },
+  "defaultBase": "main"
+}
