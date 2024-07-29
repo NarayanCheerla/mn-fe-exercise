@@ -1,4 +1,18 @@
-Run below docker commands in the project root directly.
+-------------------------------
+# To run in local
+
+npm i
+npx lerna run build --scope=utils
+npx lerna run build --scope=components
+npx lerna run build --scope=pokedex
+npm start
+
+
+# storybook
+npx lerna run storybook --scope=components
+
+--------------------------------
+# To run in docker
 
 #1 docker build -t mn-fe-exercise-docker .
 
@@ -6,12 +20,4 @@ Run below docker commands in the project root directly.
 
 Open http://localhost:3000
 
-
 -------------------------------
-Run below command in root folder to run the application in local
-
-npm i
-npx lerna run build --scope=utils
-npx lerna run build --scope=components
-npx lerna run build --scope=pokemon
-npm run start
