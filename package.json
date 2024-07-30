@@ -29,9 +29,8 @@
     }
   },
   "lint-staged": {
-    "./**/*.{ts,tsx,json,js,css,md,scss}": [
-      "npm test",
-      "npm format"
+    "./**/*.{ts,tsx,json,js,css,md}": [
+      "npm run format"
     ]
   }
 }

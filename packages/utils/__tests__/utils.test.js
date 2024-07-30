@@ -1,5 +1,5 @@
-const { ConvertAsHeading } = require("../dist/utils");
+var utils = require("../dist/utils");
 
-test("isEven", () => {
-  expect(ConvertAsHeading("hi-welcome")).toEqual("Hi Welcome");
+test("ConvertAsHeading", function () {
+  expect(utils.ConvertAsHeading("hi-welcome")).toEqual("Hi Welcome");
 });
