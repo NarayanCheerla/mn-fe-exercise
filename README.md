@@ -5,7 +5,7 @@ npm i
 npm run dev
 ```
 
-# To build and run in local
+# To build and start in local
 
 ```sh
 npm i
@@ -22,7 +22,7 @@ npm run storybook
 
 Open [http://localhost:6006](http://localhost:6006/)
 
-# To run Utils tests
+# To run utils tests
 
 ```sh
 npm i
