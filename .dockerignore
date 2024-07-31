@@ -1,0 +1,6 @@
+.husky
+.*ignore
+.*rc
+*.md
+.git
+node_modules/
