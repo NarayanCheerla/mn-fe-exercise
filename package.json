@@ -3,7 +3,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "app/*"
+    "apps/*"
   ],
   "scripts": {
     "storybook": "npx lerna run storybook --scope=components",
@@ -16,14 +16,11 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "clsx": "^2.1.1",
-    "concurrently": "^8.2.2",
     "husky": "^8.0.0",
     "lerna": "^8.1.7",
     "lint-staged": "^15.2.7",
     "nx": "19.5.3",
-    "prettier": "^3.3.3",
-    "tsup": "^8.2.3"
+    "prettier": "^3.3.3"
   },
   "husky": {
     "hooks": {
